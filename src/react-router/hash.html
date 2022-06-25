@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>hash</title>
+</head>
+<body>
+  <div>
+    <ul>
+      <li><a href="#/page1">page1</a></li>
+      <li><a href="#/page2">page2</a></li>
+    </ul>
+    <!--渲染对应组件的地方-->
+    <div id="route-view"></div>
+  </div>
+</body>
+<script>
+  // 第一次加载的时候，不会执行 hashchange 监听事件，默认执行一次
+  // DOMContentLoaded 为浏览器 DOM 加载完成时触发
+  window.addEventListener('DOMContentLoaded', load)
+  window.addEventListener('hashchange', hashChange)
+  let routerView = ''
+  function load() {
+    routerView = document.getElementById('route-view')
+    hashChange()
+  }
+  function hashChange() {
+    console.log(location.hash, 'location.hash');
+    switch(location.hash) {
+      case '#/page1':
+      routerView.innerText='this is Page1';
+      break;
+      case '#/page2':
+      routerView.innerText='this is Page2';
+      break;
+      default:
+      routerView.innerText='this is Page default';
+    }
+  }
+</script>
+</html>

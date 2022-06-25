@@ -1,0 +1,17 @@
+.wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+.header {
+  height: 60px;
+  width: 100%;
+  position: sticky;
+  background-color: white;
+  top: 0;
+}
+.cont {
+  height: 900px;
+  width: 100%;
+  background-color: red;
+}

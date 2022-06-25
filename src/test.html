@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>个人计算税收</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, 
+maximum-scale=1.0, user-scalable=no">
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+  </style>
+</head>
+<body>
+  <div id = 'app'></div>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+  <script>
+    // 本期应预扣预缴税额=（累计预扣预缴应纳税所得额×预扣率-速算扣除数)-累计减免税额
+    // 累计预扣预缴应纳税所得额=累计免税收入-累计减除费用-累计专项扣除-累计专项附加扣除-累计依法确定的其他扣除
+    new Vue({
+      el: '#app',
+      template: `
+      <div>
+        <div>
+          <label for="taxFreeIncome">
+            每月应发工资(税前){{taxFreeIncome}} <input v-model='taxFreeIncome' />
+          </label>
+        </div>
+        <div>
+          <label for="countDeduction">
+            每月减除费用 {{countDeduction}} <input v-model='countDeduction' />
+          </label>
+        </div>
+        <div>
+          <label for="insurance">
+            每月五险一金{{insurance}} <input v-model='insurance' />
+          </label>
+        </div>
+        <div>
+          <label for="specialAddOn">
+            每月专项抵扣 {{specialAddOn}} <input v-model='specialAddOn' />
+          </label>
+        </div>
+        <div>
+          <label for="monthNum">
+            累积 {{monthNum}} 月 <input v-model='monthNum' />
+          </label>
+        </div>
+        <ul >
+          <li v-for = '(item, i) in monthTax'> 第{{i + 1}}月 应缴费 {{item}}</li>
+          </ul>
+          <div>
+            <h3> 年终 {{yearEndMonth}} 系数 <input v-model='yearEndMonth' /></h3>
+            <h3> 年度总应付工资(税前) {{yearTotal}} 元 </h3>
+            <h3> 年度总税额 {{totalTax}} 元 </h3>
+            <h3> 年度到手工资 {{yearTotal - totalTax}} </h3>
+            <h3> 平均月度到手工资 {{(yearTotal - totalTax) / 12 }} </h3>
+
+          </div>
+          <button @click='count'> 计算 </button>
+      </div>
+      `,
+      data() {
+        return {
+          taxFreeIncome: 30000, // 应收工资
+          countDeduction: 5000,// 起征税
+          insurance: 4500, // 五险一金
+          specialAddOn: 2000, // 专项抵扣
+          monthNum: 12, // 累积几个月
+          monthTax: [], // 累积几个月显示
+          totalTax: 0, // 年度总共税收
+          yearTotal: 0, // 年度总收益税前
+          yearEndMonth: 0, // 年终系数
+          yearEndAward: 0, // 年终奖
+        }
+      },
+      methods: {
+        count() {
+          const arr = []
+          let prepaidIncome = 0; // 每月缴税
+          let totalTax = 0
+          for (let i = 1; i <= this.monthNum; i ++) {
+            const taxableIncome = (this.taxFreeIncome - this.countDeduction - this.insurance - this.specialAddOn) * i;
+            if (taxableIncome < 36000) {
+              prepaidIncome = Number((taxableIncome * 0.03) - totalTax);
+            } else if ( 36000 < taxableIncome <= 144000) {
+              prepaidIncome = Number(( taxableIncome * 0.1) - 2520 - totalTax);
+            } else if (144000 < taxableIncome <= 300000) {
+              prepaidIncome = ( taxableIncome * 0.2) - 16920 - totalTax;
+            } else if (300000 < taxableIncome <= 420000) {
+              prepaidIncome = ( taxableIncome * 0.25) - 31920 - totalTax;
+            } else if (420000 < taxableIncome <= 660000) {
+              prepaidIncome = ( taxableIncome * 0.3) - 52920 - totalTax;
+            } else if (660000 < taxableIncome <= 960000) {
+              prepaidIncome = ( taxableIncome * 0.35) - 85920 - totalTax;
+            } else if (taxableIncome > 960000) {
+              prepaidIncome = ( taxableIncome * 0.45) - 181920 - totalTax;
+            }
+            arr.push(prepaidIncome);
+            totalTax = arr.reduce((cur, total) => (cur + total), 0)
+          }
+          this.monthTax = arr
+          this.totalTax = totalTax;
+          this.yearTotal = this.taxFreeIncome * (12 + Number(this.yearEndMonth));
+          totalTax = 0
+        }
+      }
+    })
+  </script>
+</html>
