@@ -25,6 +25,10 @@
   "include": [
     "src"
   ],
+  "files": [
+    "./global.d.ts", 
+    "./typing.d.ts"
+  ],
   "linterOptions": {
     "exclude": [
       "src/public-path/*",

@@ -1,0 +1,73 @@
+<!--
+ * @Author: Chendapeng
+ * @Date: 2022-02-16 21:47:45
+ * @LastEditors: Chendapeng
+ * @LastEditTime: 2022-09-05 11:43:44
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+
+  <body>
+    <div id="root">
+      <!-- <button id="btn">Click me</button> -->
+      <a
+        id="link"
+        href="https://leetcode.cn/problems/palindromic-substrings/solution/chun-by-xun-ge-v-71qe/"
+        >点击跳转</a
+      >
+      <input type="checkbox" id="check1" />
+    </div>
+    <script>
+      window.onerror = function (e) {
+        console.log("全局异常监听器...", e);
+      };
+      const root = document.getElementById("root");
+      // const btn = document.getElementById("btn");
+      const link = document.getElementById("link");
+      const event = new Event("MyCustomEvent", {
+        cancelable: true,
+      });
+      root.addEventListener("MyCustomEvent", function (e) {
+        console.log("root第一个事件监听器", e);
+      });
+      // btn.addEventListener("click", function (e) {
+      //   // console.log("btn第一个事件监听器", e);
+      //   // throw Error("btn事件监听器抛出的异常");
+      //   // console.log("这一句不会被执行到，因此不会被打印");
+      // });
+      link.addEventListener("MyCustomEvent", function (e) {
+        console.log("MyCustomEvent");
+        e.preventDefault();
+      });
+      function trigger() {
+        // start
+        console.log("开始触发自定义事件");
+        link.dispatchEvent(event);
+        console.log("自定义事件监听函数执行完毕");
+      }
+      trigger();
+
+      // let arr = [];
+
+      // function add(detail) {
+      //   document.dispatchEvent(
+      //     new CustomEvent("onAdd", {
+      //       detail,
+      //     })
+      //   );
+      // }
+      // // 监听添加事件
+      // document.addEventListener("onAdd", (e) => {
+      //   e.detail ? arr.push(e.detail.age) : null;
+      //   console.log(arr);
+      // });
+      // // 触发事件
+      // add();
+      // add({ age: 18 });
+    </script>
+  </body>
+</html>

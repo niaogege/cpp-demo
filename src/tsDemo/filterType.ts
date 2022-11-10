@@ -3,7 +3,7 @@
  * @Author: Chendapeng
  * @Date: 2021-12-11 18:12:49
  * @LastEditors: Chendapeng
- * @LastEditTime: 2022-06-05 20:48:32
+ * @LastEditTime: 2022-07-06 18:11:32
  * @Description: Ts类型过滤
  */
 export interface TestObj {
@@ -75,7 +75,7 @@ type ComponentType<P = {}> = any
 
 export type ElementType<P = any> =
 {
-    [K in keyof JSX.IntrinsicElements]: P extends JSX.IntrinsicElements[K] ? K : never
+  [K in keyof JSX.IntrinsicElements]: P extends JSX.IntrinsicElements[K] ? K : never
 }[keyof JSX.IntrinsicElements] |
 ComponentType<P>;
 
@@ -97,3 +97,12 @@ type FilterByTypeName<T, Y> = {
   [P in keyof T]: P extends Y ? P : never
 }[keyof T]
 type T4 = FilterByTypeName<TestObj, 'kind'>
+type T6 = Pick<TestObj, 'kind'>
+type T5 = FilterBB<TestObj, string>
+// type T5 = {
+//   name: string;
+//   hobby: string;
+// }
+type FilterBB<T, Y> = {
+  [P in keyof T as T[P] extends Y ? P : never]: T[P]
+}

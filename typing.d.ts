@@ -2,7 +2,7 @@
  * @Author: Chendapeng
  * @Date: 2021-07-27 17:31:15
  * @LastEditors: Chendapeng
- * @LastEditTime: 2021-08-08 17:13:17
+ * @LastEditTime: 2022-07-06 19:14:52
  * @Description: 
  */
 declare global {
@@ -31,8 +31,6 @@ declare namespace Comp {
   type Params = Parameters<TArea>
 
   type MockReturnT = ReturnType<TArea>
-  
-
   
   type MockParameters<T extends (...args: any) => any> = T extends (
     ...args: infer P

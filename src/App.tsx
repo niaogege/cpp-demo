@@ -2,7 +2,7 @@
  * @Author: Chendapeng
  * @Date: 2021-06-13 10:41:00
  * @LastEditors: Chendapeng
- * @LastEditTime: 2022-06-12 20:10:18
+ * @LastEditTime: 2022-06-30 00:08:06
  * @Description: 
  */
 import * as React from 'react';
@@ -18,10 +18,16 @@ import {
 // } from './react-router/react-router-dom/modules'
 import ReactRouterDemo from './react-router';
 import last from './IOC/index'
+import { student1, student2 } from './designMode/decorator'
 // console.log(last, 'lastlast')
-
+import { person } from './designMode/props'
 const App: React.FC = () => {
   const isLogin = true;
+  console.log(student1, student1.speak())
+  console.log(student2, student2.speak())
+  console.log(person, 'person')
+  person.name = 'chendapemng'
+  // console.log(person, 'LAST')
   return (
     <BrowserRouter>
       <ul style={{

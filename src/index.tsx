@@ -2,7 +2,7 @@
  * @Author: Chendapeng
  * @Date: 2021-06-13 10:41:00
  * @LastEditors: Chendapeng
- * @LastEditTime: 2022-05-13 14:41:18
+ * @LastEditTime: 2022-07-07 10:48:50
  * @Description: 
  */
 import React from 'react';
@@ -18,10 +18,12 @@ import { Provider } from 'react-redux'
 import store from './services/mock-React-redux/store'
 // import {createStore} from 'redux'
 // const store = createStore(todoApp)
-
+// funcNum1(1,2)
+// CPPModule.readName('cpp')
+// moduleName('cpp')
 function render(props: any) {
   const { container } = props
-  const cont = container ? container.querySelector('#root') : document.querySelector('#root');
+  const cont: HTMLElement = container ? container.querySelector('#root') : document.querySelector('#root');
   ReactDOM.render(
     // <React.StrictMode>
     <Provider store={store}>

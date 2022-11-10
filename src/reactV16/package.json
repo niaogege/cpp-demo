@@ -1,0 +1,19 @@
+{
+  "name": "react-16",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx babel fiber.js index.js -d ./dist",
+    "dev": "npx babel fiber.js index.js -d ./dist --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5",
+    "@babel/preset-react": "^7.17.12"
+  }
+}
