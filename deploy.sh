@@ -11,11 +11,11 @@ cd build
 
 
 if [ -z "$GITHUB_TOKEN" ]; then
-  msg='cpp1 deploy'
+  msg='cpp1 deploy commit'
   githubUrl=git@github.com:niaogege/cpp-demo.git
 else
-  msg='cpp2 from github actions auto deploy'
-  githubUrl=https://niaogege:${GITHUB_TOKEN}@github.com:niaogege/cpp-demo.git
+  msg='cpp2 from github actions auto deploy commit'
+  githubUrl=https://niaogege:${GITHUB_TOKEN}@github.com/niaogege/cpp-demo.git
   git config --global user.name "niaogege"
   git config --global user.email "291003932@qq.com"
 fi

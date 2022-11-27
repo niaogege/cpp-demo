@@ -4,6 +4,6 @@ function readonly(target, name, descriptor) {
 }
 
 class Person {
-  @readonly() name = "cpp";
+  @readonly name = "cpp";
 }
 export const person = new Person();
