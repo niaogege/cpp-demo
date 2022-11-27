@@ -2,7 +2,7 @@
  * @Author: Chendapeng
  * @Date: 2021-06-13 10:41:00
  * @LastEditors: Chendapeng
- * @LastEditTime: 2022-11-27 11:41:29
+ * @LastEditTime: 2022-11-27 14:00:36
  * @Description: 
  */
 import * as React from 'react';
@@ -10,16 +10,14 @@ import './App.css';
 import routers, { IRouterProps } from './route'
 import BasicLayout from './layout/basicLayout'
 import {
-  Route, Switch, Redirect, BrowserRouter, HashRouter, Link
+  Route, Switch, Redirect, BrowserRouter, Link
 } from 'react-router-dom'
 // import {
 //   BrowserRouter,
 //   Link
 // } from './react-router/react-router-dom/modules'
 import ReactRouterDemo from './react-router';
-import last from './IOC/index'
 import { student1, student2 } from './designMode/decorator'
-// console.log(last, 'lastlast')
 // import { person } from './designMode/props'
 const App: React.FC = () => {
   const isLogin = true;

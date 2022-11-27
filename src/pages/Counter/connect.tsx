@@ -1,4 +1,4 @@
-import { Dispatch } from "redux";
+// import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import { add, dec, reset } from './commonRedux'
 const List = ({

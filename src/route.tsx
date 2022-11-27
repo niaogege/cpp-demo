@@ -2,7 +2,7 @@
  * @Author: Chendapeng
  * @Date: 2021-06-13 18:55:10
  * @LastEditors: Chendapeng
- * @LastEditTime: 2022-06-03 19:54:21
+ * @LastEditTime: 2022-11-27 14:01:56
  * @Description: 路由设置
  */
 
@@ -19,7 +19,7 @@ import MockRedux from './pages/MockRedux'
 import FreeCode from './components/freecode'
 import Counter from './pages/Counter/connect'
 import PageIndex from './pages/index'
-import ReactRouter from './react-router'
+// import ReactRouter from './react-router'
 export interface IRouterProps {
   name?: string,
   path?: string,
